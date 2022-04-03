@@ -1,13 +1,13 @@
 """global"""
 a = int(input())
 
-def exponentiation(digits_after_point, u, i):
+def exponentiation(digits_after_point: int, u: int, i: int) -> int:
     """local"""
     t = float(input())
     counter = str(t)
 
 
-    def work_search():
+    def work_search() -> float:
         """local"""
         res = abs(counter.find('.') - len(counter)) - 1
         if res < digits_after_point:
