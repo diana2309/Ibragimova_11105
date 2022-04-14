@@ -1,3 +1,4 @@
+# 4 задание 5 варианта
 import re
 
 pattern = r'\b(?:)q\w*e\b'
