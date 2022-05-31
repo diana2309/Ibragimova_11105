@@ -2,24 +2,25 @@
 
 lst = []
 res = []
-for e in input().split():
-    if e in '+-*/':
-        a = lst[-2]
-        b = lst[-2]
-        lst.pop()
-        lst.pop()
+n = input().split()
+for e in n:
+    if e not in ['+', '-', '*', '/', 'A', 'B', 'C']:
+        print('ошибка')
+    if e in ['+', '-', '*', '/']:
+        first = lst[-2]
+        second = lst[-1]
+        lst.append(first)
+        lst.append(second)
+        # print(lst)
         if e == '+':
-            res.append(f'({a}+{b})')
-            # print(lst)
+            res.append(f'({first}+{second})')
         elif e == '-':
-            res.append(f'({a}-{b})')
+            res.append(f'({first}-{second})')
         elif e == '*':
-            res.append(f'({a}*{b})')
+            res.append(f'({first}*{second})')
         elif e == '/':
-            res.append(f'({a}/{b})')
-            # print(lst)
+            res.append(f'({first}/{second})')
         lst.append(res[-1])
     else:
         lst.append(e)
-        # print(lst)
-print(*res[-1])
+print(res[-1])
