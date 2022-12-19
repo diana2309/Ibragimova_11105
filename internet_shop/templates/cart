@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Cart</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Products that you added</h1>
+    <p>Products</p>
+</div>
+{% endblock %}
