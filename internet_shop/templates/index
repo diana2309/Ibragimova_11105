@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>LUXV</title>
+{% endblock %}
+
+{% block body %}
+<style>
+.product {
+
+}
+.container {
+    display: block;
+	width: 100%;
+	float: left;
+	transition: width .2s;
+}
+
+@media only screen and (min-width: 450px) {
+	.container {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.container {
+		width: 33.333%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.container {
+		width: 25%;
+	}
+}
+.image img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+
+.image {
+    margin-bottom: 10px;
+}
+
+.info h3 {
+    font-size: 21px;
+    margin-bottom: 0;
+    color: black;
+}
+.pupupu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.aaa {
+    display: flex;
+    flex-direction: row;
+}
+.info-price {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.adding {
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+</style>
+{% for product in stuff %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <div class="image">
+                        <img src="{{ product[4] }}" alt="">
+                    </div>
+                    <div class="info">
+                        <h3><a href="#">{{ product[1] }}</a></h3>
+                        <div class="pupupu">
+                            <span class="info-price" href="#">{{ product[2]}}</span>
+                            <div class="aaa">
+                                <button class="adding add-to-favourites"><ion-icon name="heart-outline"></ion-icon></button>
+                                <button class="adding add-to-cart"><ion-icon name="cart-outline"></ion-icon></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+{% endblock %}
