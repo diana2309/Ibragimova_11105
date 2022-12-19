@@ -1,0 +1,29 @@
+import json
+import psycopg2
+
+with open("stuff.json", "r") as f:
+    stuff = json.load(f)
+
+# подключаемся к БД
+con = psycopg2.connect(
+    dbname="internetShop",
+    user="posgres",
+    password="WCd2u7WA",
+    host="localhost",
+    port=5432
+)
+
+cur = con.cursor()
+
+cur.execute("CREATE TABLE stuff(stuff_id serial, title varchar, price float, isActive boolean, photo bytea, article varchar, volume int, info varchar)")
+
+con.commit()
+
+inserts = ''
+for stuf in stuff:
+    inserts += f"INSERT INTO stuff values ({stuf['stuff_id']}, '{stuf['title']}', {stuf['price']}, '{stuf['isActive']},{stuf['photo']},{stuf['article']}, {stuf['volume']}, {stuf['info']}');\n"
+
+con.commit()
+
+cur.close()
+con.close()
