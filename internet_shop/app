@@ -1,0 +1,56 @@
+from flask import Flask, render_template
+import psycopg2
+import psycopg2.extras
+
+app = Flask(__name__)
+
+
+DB_NAME = "internetshop"
+DB_USER = "postgres"
+DB_PASSWORD = "WCd2u7WA"
+DB_HOST = "localhost"
+DB_PORT = 5432
+
+conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT)
+
+@app.route('/')
+def index():   # put application's code here
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    cursor.execute("SELECT * FROM stuff")
+    rows = cursor.fetchall()
+    return render_template('index.html', stuff=rows)
+
+
+# @app.route('/about')
+# def about():  # put application's code here
+#     return render_template('about.html')
+
+
+@app.route('/registration')
+def registration():  # put application's code here
+    return render_template('registration.html')
+
+
+@app.route('/log_in')
+def log_in():  # put application's code here
+    return render_template('log_in.html')
+
+
+@app.route('/cart')
+def cart():  # put application's code here
+    return render_template('cart.html')
+
+
+@app.route('/favourites')
+def favourits():  # put application's code here
+    return render_template('favourits.html')
+
+
+@app.route('/profile')
+def profile():  # put application's code here
+    return render_template('profile.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
